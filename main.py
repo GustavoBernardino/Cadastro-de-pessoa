@@ -2,7 +2,7 @@ from tkinter import *
 
 
 janela = Tk()
-janela.title("Cadastro de Pessoa Física ")
+janela.title("Cadastro de Pessoa ")
 janela.geometry('500x500')
 
 
