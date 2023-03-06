@@ -3,17 +3,20 @@ from tkinter import *
 
 janela = Tk()
 janela.title("Cadastro de Pessoa ")
-janela.geometry('500x500')
+janela.geometry('600x700')
 
+def fechar(quit):
+    janela.quit()
 
 # funçao obter
 def obter():
 
-    nome = str(enntry_nome.get())
+    nome = enntry_nome.get()
     dn = enntry_dn.get()
     mae = enntry_nome_mae.get()
     cpf = enntry_cpf.get()
     rg = enntry_rg.get()
+  
 
     flag = True
     flog = True
@@ -24,9 +27,11 @@ def obter():
 
     #Verificando Tamanho do RG
     if (len(rg) != tam_rg):
-        print("RG Inválido")
+        Label_printrg = Label(janela, width=10, height=1, text="RG inválido ", font=('Arial 10'))
+        Label_printrg.grid(row=6, column=0, padx=5, pady=3)
     else:
-        print("RG Válido")
+        Label_printrg= Label(janela, width=10, height=1, text="Rg válido ", font=('Arial 10'))
+        Label_printrg.grid(row=6, column=0, padx=5, pady=3)
 
       
     #Verificando Tamanho da Data de Nascimento com barras
@@ -41,9 +46,11 @@ def obter():
                 if (not d.isdigit()):
                     flog = False
     if (flog):
-        print("Data Válida")
+        Label_printdata = Label(janela, width=10, height=1, text="Data válida ", font=('Arial 10'))
+        Label_printdata.grid(row=7, column=0, padx=5, pady=3)
     else:
-        print("A data informada não tem um formato válido.")
+        Label_printdata = Label(janela, width=10, height=1, text="Data inválida ", font=('Arial 10'))
+        Label_printdata.grid(row=7, column=0, padx=5, pady=3)
 
       
     #Verificando Tamanho do CPF com pontos e barras
@@ -59,18 +66,49 @@ def obter():
                     flag = False
 
     if (flag):
-        print("Formato de CPF Válido.")
-        print("-" * 40)
+        Label_printcpf = Label(janela, width=20, height=1, text="Formato de CPF Válido ", font=('Arial 10'))
+        Label_printcpf.grid(row=8, column=0, padx=5, pady=3)
     else:
-        print("O CPF informado não tem um formato válido.")
+        Label_printcpf = Label(janela, width=30, height=1, text="O formato de CPF não é válido", font=('Arial 10'))
+        Label_printcpf.grid(row=8, column=0, padx=5, pady=3)
 
-    print("Revise seus dados antes de continuar ")
-    print("-" * 40)
-    print(f"Nome: {nome} \nData de nascimento: {dn} \nNumero de  CPF: {cpf} \nNumero de RG: {rg} \nNome da mãe: {mae}.")
-    print("-" * 40)
+      #========================================================================================================================
+    # Linha separadora
+    Label_separador = Label(janela, width=40, height=1,
+                            text="=================================================================", font=('Arial 10'))
+    Label_separador.grid(row=11, column=0, padx=10, pady=5)
+    Label_separador = Label(janela, width=20, height=1,
+                            text="=================================================================", font=('Arial 10'))
+    Label_separador.grid(row=11, column=1, padx=10, pady=5)
 
-    print("Cadastro Concluido")
+    #Resultados do Cadastro
+    Label_resultado = Label(janela, width=40,height=8,text=f"Nome: {nome} \nData de nascimento: {dn} "
+                                                           f"\nNumero de  CPF: {cpf} \nNumero de RG: {rg} \nNome da mãe: {mae}.",font=('Arial 10'))
+    Label_resultado.grid(row=12,column=0,padx=10,pady=5)
 
+    #Linha separadora
+    Label_separador = Label(janela, width=40, height=1,
+                            text="=================================================================", font=('Arial 10'))
+    Label_separador.grid(row=13, column=0, padx=10, pady=5)
+    Label_separador = Label(janela, width=20, height=1,
+                            text="=================================================================", font=('Arial 10'))
+    Label_separador.grid(row=13, column=1, padx=10, pady=5)
+
+#=========================================================================================================================
+    Label_printdados = Label(janela, width=30, height=1, text="Os Dados estão corretos?", font=('Arial 10'))
+    Label_printdados.grid(row=14, column=0, padx=5, pady=3)
+
+    # botao Confirmar
+    botao = Button(janela, command=quit, width=8, height=1, text="Confirmar", relief="raised", fg="#fcb603",
+                   bg='white')
+    botao.grid(row=15, column=0, padx=5, pady=20)
+
+    # botao Cancelar
+    botao = Button(janela, command=quit, width=8, height=1, text="Cancelar", relief="raised", fg="#fcb603",
+                   bg='white')
+    botao.grid(row=15, column=1, padx=5, pady=20)
+
+#=========================================================================================================================
 
 # nome do usuario
 Label_nome = Label(janela, width=10, height=2, text="Nome: ", font=('Arial 10'))
@@ -79,32 +117,30 @@ enntry_nome = Entry(janela, font=('Arial 10'))
 enntry_nome.grid(row=0, column=1, padx=10, pady=5)
 
 # Data de nascimento
-Label_dn = Label(janela, width=20, height=2, text="Data de Nascimento: ", font=('Arial 10'))
+Label_dn = Label(janela, width=20, height=1, text="Data de Nascimento: ", font=('Arial 10'))
 Label_dn.grid(row=1, column=0, padx=10, pady=5)
 enntry_dn = Entry(janela, font=('Arial 10'))
 enntry_dn.grid(row=1, column=1, padx=10, pady=5)
 
 # Nome da Mãe
-Label_nome_mae = Label(janela, width=10, height=2, text="Nome da Mãe: ", font=('Arial 10'))
+Label_nome_mae = Label(janela, width=10, height=1, text="Nome da Mãe: ", font=('Arial 10'))
 Label_nome_mae.grid(row=2, column=0, padx=10, pady=5)
 enntry_nome_mae = Entry(janela, font=('Arial 10'))
 enntry_nome_mae.grid(row=2, column=1, padx=10, pady=5)
 
 # CPF
-Label_cpf = Label(janela, width=10, height=2, text="CPF: ", font=('Arial 10'))
+Label_cpf = Label(janela, width=10, height=1, text="CPF: ", font=('Arial 10'))
 Label_cpf.grid(row=3, column=0, padx=10, pady=5)
 enntry_cpf = Entry(janela, font=('Arial 10'))
 enntry_cpf.grid(row=3, column=1, padx=10, pady=5)
 
 # RG
-Label_rg = Label(janela, width=10, height=2, text="RG: ", font=('Arial 10'))
+Label_rg = Label(janela, width=10, height=1, text="RG: ", font=('Arial 10'))
 Label_rg.grid(row=4, column=0, padx=10, pady=5)
 enntry_rg = Entry(janela, font=('Arial 10'))
 enntry_rg.grid(row=4, column=1, padx=10, pady=5)
 
 botao = Button(janela, command=obter, width=8, height=1, text="Ver dados",relief="raised",fg="#fcb603",bg='white')
-botao.grid(row=13,column=0,padx=5,pady=20)
-
-
+botao.grid(row=10,column=0,padx=5,pady=20)
 
 janela.mainloop()
