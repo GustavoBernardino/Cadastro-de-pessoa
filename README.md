@@ -1,6 +1,6 @@
 # Cadastro de pessoas
 
-Sistema desenvolvido em Python para cadastrar pessoas e verificar se o RG e o CPF foram informados em formatos válidos.
+Sistema em desenvolvimento na linguagem Python para cadastrar pessoas e verificar se o RG e o CPF foram informados em formatos válidos.
 
 ## Funcionalidades
 
@@ -25,7 +25,11 @@ python main.py
 
 ## Demonstração
 
-Adicione aqui uma imagem do programa funcionando.
+<img width="750" height="797" alt="image" src="https://github.com/user-attachments/assets/67ebe046-8e0e-43fa-8df0-718687847f28" />
+<img width="1177" height="1336" alt="image" src="https://github.com/user-attachments/assets/debede0f-4c7c-4d5e-9ac9-60c9460fe9a2" />
+
+
+
 
 ## Autor
 
